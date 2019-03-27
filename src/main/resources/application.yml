@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: stag
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+  thymeleaf:
+    mode: HTML5
+    # cache: false
+  application:
+    name: db-demo
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/world?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: HAND16265hand
+    driverClassName: com.mysql.jdbc.Driver
+  dev-datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mysql?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: HAND16265hand
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  # redis
+  cache:
+    type: REDIS
+  redis:
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+beetl-beetlsql:
+  dev: false
+beetl:
+  suffix: html
+  beetlsql:
+    dev: false
+#----------actuator--------
+management:
+  security: false
+  server:
+    port: 9001
+endpoints:
+  shutdown: true

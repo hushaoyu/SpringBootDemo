@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  servlet:
+    path: /prod
+#  env
+my:
+  name: spring-boot-prod
+  date: 2019-03-22
+  number: ${random.int}
+  uuid: ${random.uuid}
+  max: ${random.int(10)}
+  value: ${random.value}
+  greeting: hi, i`m ${my.name}
