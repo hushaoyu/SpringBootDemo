@@ -1,16 +1,13 @@
-package com.demo.mavenTutorial.controller;/**
+package com.demo.mavenTutorial.controller;
+/**
  * @author shaoy
  * @date 2019/3/26 9:48
  */
 
-import org.apache.tomcat.jni.Time;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -20,12 +17,13 @@ import java.util.concurrent.TimeUnit;
  * @Description redis cache
  * @Version 1.0
  **/
-@Controller
+@RestController
 @RequestMapping("/cache")
 public class RedisController {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    @ApiOperation(value = "获取redis的str键值")
     @RequestMapping(value = "/str", method = RequestMethod.GET)
     @ResponseBody
     public String env(@RequestParam String value) {
@@ -36,6 +34,7 @@ public class RedisController {
         return redisTemplate.opsForValue().get("key2");
     }
 
+    @ApiOperation(value = "获取redis list键值")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public List<String> getCacheList(@RequestParam String key) {
@@ -44,6 +43,7 @@ public class RedisController {
         return redisTemplate.opsForList().range(key, 0, -1);
     }
 
+    @ApiOperation(value = "判断并设置redis键值")
     @RequestMapping(value = "/if", method = RequestMethod.GET)
     @ResponseBody
     public boolean setCacheIfAbsent() {

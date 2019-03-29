@@ -22,3 +22,12 @@ logging:
     root: INFO
     org: INFO
     com.demo.mavenTutorial.controller: INFO
+# bcs
+bcs:
+  bos:
+    ak: 37792a864fe64f628c*****
+    sk: 1dc18a5e68df4f8b91e10fac9****
+  iot:
+    endpoint: iot.bj.baidubce.com
+  dm:
+    endpoint: iotdm.bj.baidubce.com
